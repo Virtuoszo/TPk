@@ -127,3 +127,51 @@ public:
 	friend class VehicleBuilder;
 };
 
+class VehicleBuilder // строитель основного объекта
+{
+	vehicle * v; // экземпляр основного объекта
+
+public:
+	vehicle* createVehicle()
+	{
+		v = new vehicle();
+		return v;
+	}
+
+	virtual void BuilderColor()=0;
+
+	virtual void BuilderPrice()=0;
+
+	virtual void BuilderET()=0;
+
+	virtual void BuilderEV()=0;
+
+	virtual void BuilderYear() = 0;
+
+	virtual void BuilderBrand() = 0;
+
+	virtual void BuilderModel() = 0;
+
+	virtual void BuilderSize() = 0;
+
+	virtual void BuilderFuel() = 0;
+
+	virtual void BuilderST() = 0; //steering_type
+
+	virtual void BuilderFuelcons() = 0;
+
+	virtual void BuilderTrunkV() = 0;
+
+	vehicle* getVehicle()
+	{
+		return v;
+	}
+	friend class motorbikeBuilder;
+	friend class carBuilder;
+	friend class quadbikeBuilder;
+
+	~VehicleBuilder()
+	{
+		delete v;
+	}
+};
