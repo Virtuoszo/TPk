@@ -758,3 +758,24 @@ catch (const char* a)
 	cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
 }
 }
+
+//Методы класса директор
+vehicle* Director::buildVehicle()
+{
+	builder->createVehicle();
+	builder->BuilderColor();
+	builder->BuilderBrand();
+	builder->BuilderET();
+	builder->BuilderEV();
+	builder->BuilderFuel();
+	builder->BuilderFuelcons();
+	builder->BuilderModel();
+	builder->BuilderPrice();
+	builder->BuilderSize();
+	builder->BuilderST();
+	builder->BuilderTrunkV();
+	builder->BuilderYear();
+	vehicle* v = builder->getVehicle();
+	return v;
+
+}
