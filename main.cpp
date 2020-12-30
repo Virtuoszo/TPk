@@ -2,6 +2,10 @@
 #include "vehicle.h"#include<fstream>
 #include "vehicle.h"
 #include<Windows.h>
+#include<fstream>
+#include "vehicle.h"
+#include<Windows.h>
+
 
 using namespace std;
 int main(void)
@@ -29,22 +33,58 @@ int main(void)
 		{
 		case 0:
 		{
+			cout << "Работа успешно окончена, осуществляется выход из программы..." << endl;
+			cin.get(); cin.get(); return 0;
 		}
 		case 1:
 		{
-			
+			motorbikeBuilder* m = new motorbikeBuilder();
+			director->setBuilder(m);
+			vehicle* VehicleObj = director->buildVehicle();
+			VehicleObj->getVehicle(cout);
+			f.close();
+			f.open("save.txt", ios_base::app);
+			VehicleObj->getVehicle(f);
+			delete VehicleObj;
+			break;
 		}
 		case 2:
 		{
-			
+			quadbikeBuilder* q = new quadbikeBuilder();
+			director->setBuilder(q);
+			vehicle* VehicleObj = director->buildVehicle();
+			VehicleObj->getVehicle(cout);
+			f.close();
+			f.open("save.txt", ios_base::app);
+			VehicleObj->getVehicle(f);
+			delete VehicleObj;
+			break;
 		}
 		case 3:
 		{
-			
+			carBuilder* c = new carBuilder();
+			director->setBuilder(c);
+			vehicle* VehicleObj = director->buildVehicle();
+			VehicleObj->getVehicle(cout);
+			f.close();
+			f.open("save.txt", ios_base::app);
+			VehicleObj->getVehicle(f);
+			delete VehicleObj;
+			break;
 		}
 		case 4:
 		{
-			
+			string fs;
+			cout << endl;
+			f.close();
+			f.open("save.txt", ios_base::in);
+			getline(f, fs);
+			while (!fs.empty())
+			{
+				cout << fs<<endl;
+				getline(f, fs);
+			}
+			cout << endl;
 		}
 		default:
 			cerr << "Некорректный ввод." << endl;
