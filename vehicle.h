@@ -175,3 +175,700 @@ public:
 		delete v;
 	}
 };
+
+class motorbikeBuilder :
+	public VehicleBuilder
+{
+    void BuilderColor() override
+	{
+		
+		point:
+		try {
+			string in;
+			cout << "Введите цвет мотоцикла: ";
+			cin >> in;
+			cout << endl;
+			v->setColor(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+			goto point;
+		}
+	}
+
+	void BuilderPrice() override {
+		
+
+		point: try {
+			int in;
+			cout << "Введите цену мотоцикла в ($): ";
+			cin >> in;
+			cout << endl;
+			v->setPrice(in);
+			if(in<0)throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderET() override {
+		
+
+		point: try {
+			int in;
+			cout << "Введите тип двигателя мотоцикла(2 если двухтактный, 4 если четырехтактный): ";
+			cin >> in;
+			cout << endl;
+			v->setET(in);
+			if (in != 2 && in != 4) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderEV() override {
+		
+
+		point: try {
+			float in;
+			cout << "Введите объем двигателя мотоцикла (см куб.): ";
+			cin >> in;
+			cout << endl;
+			v->setEV(in);
+			if (in < 0)throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderYear() override {
+		
+
+		point: try {
+			int in;
+			cout << "Введите год выпуска мотоцикла: ";
+			cin >> in;
+			cout << endl;
+			v->setYear(in);
+				if (in < 1950 || in > 2020) throw "Были введены некорректные данные.";	
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderBrand() override {
+		
+
+		point: try {
+			string in;
+			cout << "Введите марку мотоцикла: ";
+			cin >> in;
+			cout << endl;
+			v->setBrand(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderModel() override {
+		
+
+		point: try {
+			string in;
+			cout << "Введите модель мотоцикла: ";
+			cin.get();
+			cin >> in;
+			cout << endl;
+			v->setModel(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderSize() override {
+		
+
+		point: try {
+			float in;
+			cout << "Введите размер мотоцикла (см.куб.): ";
+			cin >> in;
+			cout << endl;
+			v->setSize(in);
+			if (in < 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderFuel() override {
+		
+
+		point: try {
+			int in;
+			cout << "Введите требование к топливу (92,95,98 Бензин, 0 -дизель): ";
+			cin >> in;
+			cout << endl;
+			v->setFuel(in);
+				if (in != 92 && in != 95 && in != 98 && in != 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderST() override {
+		
+
+		point: try {
+			int in;
+			cout << "Введите тип рулевого механизма мотоцикла(червячный, реечный и винтовой тип виды механизмов соответственно у нас это будет 0,1 и 2 типы): ";
+			cin >> in;
+			cout << endl;
+			v->setST(in);
+			if (in != 0 && in != 1 && in != 2) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderFuelcons() override {
+		point: try {
+			float in;
+			cout << "Введите расход топлива по городу мотоцикла(л): ";
+			cin >> in;
+			cout << endl;
+			v->setFuelcons(in);
+			if (in < 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderTrunkV() override {
+		cout << "У мотоциклов багажник отсутствует. " << endl; 
+		v->setTrunkV(0);
+
+	}
+};
+
+class quadbikeBuilder :
+	public VehicleBuilder
+{
+	void BuilderColor() override
+	{
+
+
+		point: try {
+			string in;
+			cout << "Введите цвет квадроцикла: ";
+			cin >> in;
+			cout << endl;
+			v->setColor(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl;
+		}
+	}
+
+	void BuilderPrice() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите цену квадроцикла в ($): ";
+			cin >> in;
+			cout << endl;
+			v->setPrice(in);
+			if (in < 0)throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderET() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите тип двигателя квадроцикла(2 если двухтактный, 4 если четырехтактный): ";
+			cin >> in;
+			cout << endl;
+			v->setET(in);
+			if (in != 2 && in != 4) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderEV() override {
+
+
+		point: try {
+			float in;
+			cout << "Введите объем двигателя квадроцикла (см куб.): ";
+			cin >> in;
+			cout << endl;
+			v->setEV(in);
+			if (in < 0)throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderYear() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите год выпуска квадроцикла: ";
+			cin >> in;
+			cout << endl;
+			v->setYear(in);
+			if (in < 1950 || in > 2020) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderBrand() override {
+
+
+		point: try {
+			string in;
+			cout << "Введите марку квадроцикла: ";
+			cin >> in;
+			cout << endl;
+			v->setBrand(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderModel() override {
+
+
+		point: try {
+			string in;
+			cout << "Введите модель квадроцикла: ";
+			cin.get();
+			cin >> in;
+			cout << endl;
+			v->setModel(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderSize() override {
+
+
+		point: try {
+			float in;
+			cout << "Введите размер квадроцикла (см.куб.): ";
+			cin >> in;
+			cout << endl;
+			v->setSize(in);
+			if (in < 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderFuel() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите требование к топливу (92,95,98 Бензин, 0 -дизель): ";
+			cin >> in;
+			cout << endl;
+			v->setFuel(in);
+			if (in != 92 && in != 95 && in != 98 && in != 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderST() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите тип рулевого механизма квадроцикла(червячный, реечный и винтовой тип виды механизмов соответственно у нас это будет 0,1 и 2 типы): ";
+			cin >> in;
+			cout << endl;
+			v->setST(in);
+			if (in != 0 && in != 1 && in != 2) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderFuelcons() override {
+		point: try {
+			float in;
+			cout << "Введите расход топлива по городу квадроцикла(л): ";
+			cin >> in;
+			cout << endl;
+			v->setFuelcons(in);
+			if (in < 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+
+	void BuilderTrunkV() override {
+		cout << "У квадроциклов багажник отсутствует. "<<endl;
+		v->setTrunkV(0);
+	}
+};
+
+class carBuilder :
+	public VehicleBuilder
+{
+	void BuilderColor() override
+	{
+
+
+		point: try {
+			string in;
+			cout << "Введите цвет машины: ";
+			cin >> in;
+			cout << endl;
+			v->setColor(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderPrice() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите цену машины в ($): ";
+			cin >> in;
+			cout << endl;
+			v->setPrice(in);
+			if (in < 0)throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderET() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите тип двигателя машины(2 если двухтактный, 4 если четырехтактный): ";
+			cin >> in;
+			cout << endl;
+			v->setET(in);
+			if (in != 2 && in != 4) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderEV() override {
+
+
+		point: try {
+			float in;
+			cout << "Введите объем двигателя машины (см куб.): ";
+			cin >> in;
+			cout << endl;
+			v->setEV(in);
+			if (in < 0)throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderYear() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите год выпуска машины: ";
+			cin >> in;
+			cout << endl;
+			v->setYear(in);
+			if (in < 1950 || in > 2020) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderBrand() override {
+
+
+		point: try {
+			string in;
+			cout << "Введите марку машины: ";
+			cin >> in;
+			cout << endl;
+			v->setBrand(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderModel() override {
+
+
+		point: try {
+			string in;
+			cout << "Введите модель машины: ";
+			cin.get();
+			cin >> in;
+			cout << endl;
+			v->setModel(in);
+			for (int i = 0; i < in.length(); i++)
+			{
+				if (in[i] > 127 || in[i] < 0) throw "Были введены некорректные данные.";
+			}
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderSize() override {
+
+
+		point: try {
+			float in;
+			cout << "Введите размер машины (см.куб.): ";
+			cin >> in;
+			cout << endl;
+			v->setSize(in);
+			if (in < 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderFuel() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите требование к топливу (92,95,98 Бензин, 0 -дизель): ";
+			cin >> in;
+			cout << endl;
+			v->setFuel(in);
+			if (in != 92 && in != 95 && in != 98 && in != 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderST() override {
+
+
+		point: try {
+			int in;
+			cout << "Введите тип рулевого механизма машины(червячный, реечный и винтовой тип виды механизмов соответственно у нас это будет 0,1 и 2 типы): ";
+			cin >> in;
+			cout << endl;
+			v->setST(in);
+			if (in != 0 && in != 1 && in != 2) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderFuelcons() override {
+		point: try {
+			float in;
+			cout << "Введите расход топлива по городу машины(л): ";
+			cin >> in;
+			cout << endl;
+			v->setFuelcons(in);
+			if (in < 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+
+	void BuilderTrunkV() override {
+		
+
+		point: try {
+			float in;
+			cout << "Объем багажника: "; cin >> in; cout << endl;
+			v->setTrunkV(in);
+			if (in < 0) throw "Были введены некорректные данные.";
+		}
+		catch (const char* a)
+		{
+			cerr << a << endl;
+			cerr << "Попробуйте ввести данные еще раз. " << endl; goto point;
+		}
+	}
+};
+
+class Director
+{
+	VehicleBuilder * builder;
+
+public:
+	void setBuilder(VehicleBuilder* b)
+	{
+		builder = b;
+	}
+
+	vehicle* buildVehicle()
+	{
+		builder->createVehicle();
+		builder->BuilderColor();
+		builder->BuilderBrand();
+		builder->BuilderET();
+		builder->BuilderEV();
+		builder->BuilderFuel();
+		builder->BuilderFuelcons();
+		builder->BuilderModel();
+		builder->BuilderPrice();
+		builder->BuilderSize();
+		builder->BuilderST();
+		builder->BuilderTrunkV();
+		builder->BuilderYear();
+		vehicle* v = builder->getVehicle();
+		return v;
+		
+	}
+	~Director()
+	{
+		delete builder;
+	}
+};
